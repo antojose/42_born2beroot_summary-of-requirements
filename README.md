@@ -42,13 +42,13 @@ Outline:
 - Create at least 2 encrypted partitions using LVM. 
 - Below is an example of a possible partitioning:  
 ```
-	# lsblk
-	NAME                               MAJ:MIN RM   SIZE RO TYPE   MOUNTPOINTS
-	sda                                  8:0    0     8G  0 disk   
-	├─sda1                               8:1    0   487M  0 part   /boot
-	├─sda2                               8:2    0     1K  0 part   
-	└─sda5                               8:5    0   7.5G  0 part   
-	  └─sda5_crypt                     254:0    0   7.5G  0 crypt  
+# lsblk
+NAME                               MAJ:MIN RM   SIZE RO TYPE   MOUNTPOINTS
+sda                                  8:0    0     8G  0 disk   
+├─sda1                               8:1    0   487M  0 part   /boot
+├─sda2                               8:2    0     1K  0 part   
+└─sda5                               8:5    0   7.5G  0 part   
+  └─sda5_crypt                     254:0    0   7.5G  0 crypt  
 		├─wil--vg-root                 254:1    0   2.8G  0 lvm    /
 		├─wil--vg-swap_1               254:2    0   976M  0 lvm    [SWAP]
 		└─wil--vg-home                 254:3    0   3.8G  0 lvm    /home
