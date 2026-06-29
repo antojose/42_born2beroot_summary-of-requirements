@@ -21,31 +21,27 @@ Outline:
 - [DEFENSE]()
 
 
+## BASICS:
+- Create the VM in VirtualBox.
+- Submit README.md and a signature.txt containing the sha1sum of the VDI file.
+
+
+## CHOICE OF OS:
+- Debian STABLE (not TESTING/UNSTABLE), since new to system administration.
+
+## CHOICE OF SERVICES:
+- Install only a minimal set of services.
+- Do not install any GUI (X.org / Wayland / ...).
+
+
+## HOSTNAME:
+- Initial hostname should be your login ending with 42 (e.g., wil42).
+- You will have to modify this hostname during your peer review.
+
+## PARTITIONING:
+- Create at least 2 encrypted partitions using LVM. 
+- Below is an example of a possible partitioning:  
 ```
-
-## SUMMARY OF REQUIREMENTS:
-
-### BASICS:
-Create the VM in VirtualBox.
-Submit README.md and a signature.txt containing the sha1sum of the VDI file.
-
-
-### CHOICE OF OS:
-Debian STABLE (not TESTING/UNSTABLE), since new to system administration.
-
-### CHOICE OF SERVICES:
-Install only a minimal set of services.
-Do not install any GUI (X.org / Wayland / ...).
-
-
-### HOSTNAME:
-Initial hostname should be your login ending with 42 (e.g., wil42).
-You will have to modify this hostname during your peer review.
-
-
-### PARTITIONING:
-Create at least 2 encrypted partitions using LVM. 
-Below is an example of a possible partitioning:
 	# lsblk
 	NAME                               MAJ:MIN RM   SIZE RO TYPE   MOUNTPOINTS
 	sda                                  8:0    0     8G  0 disk   
@@ -57,41 +53,41 @@ Below is an example of a possible partitioning:
 		├─wil--vg-swap_1               254:2    0   976M  0 lvm    [SWAP]
 		└─wil--vg-home                 254:3    0   3.8G  0 lvm    /home
 	sr0                                 11:0    1  1024M  0 rom    
-
-  BONUS (matters only if everything in the mandatory part is perfect):
-	Set up the partitions correctly so that you obtain a structure similar to the one below:
-		# lsblk
-		NAME                               MAJ:MIN RM   SIZE RO TYPE   MOUNTPOINTS
-		sda                                  8:0    0  30.8G  0 disk   
-		├─sda1                               8:1    0   500M  0 part   /boot
-		├─sda2                               8:2    0     1K  0 part   
-		└─sda5                               8:5    0  30.3G  0 part   
-		└─sda5_crypt                     254:0    0  30.3G  0 crypt  
-			├─LVMGroup-root                254:1    0    10G  0 lvm    /
-			├─LVMGroup-swap                254:2    0   2.3G  0 lvm    [SWAP]
-			├─LVMGroup-home                254:3    0     5G  0 lvm    /home
-			├─LVMGroup-var                 254:4    0     3G  0 lvm    /var
-			├─LVMGroup-srv                 254:5    0     3G  0 lvm    /srv
-			├─LVMGroup-tmp                 254:6    0     3G  0 lvm    /tmp
-			└─LVMGroup-var--log            254:7    0     4G  0 lvm    /var/log
-		sr0                                 11:0    1  1024M  0 rom    
-
+```
+- BONUS (matters only if everything in the mandatory part is perfect):  
+Set up the partitions correctly so that you obtain a structure similar to the one below:
+```
+# lsblk
+NAME                               MAJ:MIN RM   SIZE RO TYPE   MOUNTPOINTS
+sda                                  8:0    0  30.8G  0 disk   
+├─sda1                               8:1    0   500M  0 part   /boot
+├─sda2                               8:2    0     1K  0 part   
+└─sda5                               8:5    0  30.3G  0 part   
+  └─sda5_crypt                     254:0    0  30.3G  0 crypt  
+	├─LVMGroup-root                254:1    0    10G  0 lvm    /
+	├─LVMGroup-swap                254:2    0   2.3G  0 lvm    [SWAP]
+	├─LVMGroup-home                254:3    0     5G  0 lvm    /home
+	├─LVMGroup-var                 254:4    0     3G  0 lvm    /var
+	├─LVMGroup-srv                 254:5    0     3G  0 lvm    /srv
+	├─LVMGroup-tmp                 254:6    0     3G  0 lvm    /tmp
+	└─LVMGroup-var--log            254:7    0     4G  0 lvm    /var/log
+sr0                                 11:0    1  1024M  0 rom    
+```
 The examples show arbitrary disk sizes. You need to determine the appropriate size for each partition to ensure proper operation while avoiding unnecessary disk usage.
 
+## USERS:
+- In addition to root, add a user with your intraname as the username.
+- Add that user to both user42 and sudo groups.
+- During your peer review, you will have to create a new user and assign it to a group.
 
-### USERS:
-In addition to root, add a user with your intraname as the username.
-Add that user to both user42 and sudo groups.
-During your peer review, you will have to create a new user and assign it to a group.
 
-
-### SUDO CONFIG:
-Max 3 attempts in the event of an incorrect password when using sudo.
-Show custom message when an incorrect password is entered when using sudo.
-Log (save in /var/log/sudo/ folder) the input and output of each action performed with sudo.
-Limit paths that can be accessed with sudo:
-  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin
-Enable TTY mode.
+## SUDO CONFIG:
+- Max 3 attempts in the event of an incorrect password when using sudo.
+- Show custom message when an incorrect password is entered when using sudo.
+- Log (save in /var/log/sudo/ folder) the input and output of each action performed with sudo.
+- Limit paths that can be accessed with sudo:  
+  `/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin`
+- Enable TTY mode.
 
 
 ### PASSWORD POLICY:
