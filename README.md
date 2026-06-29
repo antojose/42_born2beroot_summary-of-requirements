@@ -48,7 +48,7 @@ Outline:
 	├─sda1                               8:1    0   487M  0 part   /boot
 	├─sda2                               8:2    0     1K  0 part   
 	└─sda5                               8:5    0   7.5G  0 part   
-	└─sda5_crypt                     254:0    0   7.5G  0 crypt  
+	  └─sda5_crypt                     254:0    0   7.5G  0 crypt  
 		├─wil--vg-root                 254:1    0   2.8G  0 lvm    /
 		├─wil--vg-swap_1               254:2    0   976M  0 lvm    [SWAP]
 		└─wil--vg-home                 254:3    0   3.8G  0 lvm    /home
@@ -90,7 +90,7 @@ The examples show arbitrary disk sizes. You need to determine the appropriate si
 - Enable TTY mode.
 
 
-### PASSWORD POLICY:
+## PASSWORD POLICY:
 For root and non-root users:
 1) Auto-expire password every 30 days.
 Send user a warning message 7 days before their password expires.
