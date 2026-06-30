@@ -1,24 +1,24 @@
 # Summary of Requirements - Born2beRoot @42
 
 Outline:
-- [BASICS]()
-- [CHOICE OF OS]()
-- [CHOICE OF SERVICES]()
-- [HOSTNAME]()
-- [PARTITIONING]()
-- [USERS]()
-- [SUDO CONFIG]()
-- [PASSWORD POLICY]()
-- [SSH CONFIG]()
-- [FIREWALL]()
-- [MONITORING SCRIPT]()
-- [README.md]()
-- [SIGNATURE.TXT]()
-- [BONUS]()
-- [SNAPSHOTS]()
-- [USEFUL COMMANDS]()
-- [SUBMISSION]()
-- [DEFENSE]()
+- [BASICS](#basics)
+- [CHOICE OF OS](#choice-of-os)
+- [CHOICE OF SERVICES](#choice-of-os)
+- [HOSTNAME](#hostname)
+- [PARTITIONING](#partitioning)
+- [USERS](#users)
+- [SUDO CONFIG](#sudo-config)
+- [PASSWORD POLICY](#password-policy)
+- [SSH CONFIG](#ssh-config)
+- [FIREWALL](#firewall)
+- [MONITORING SCRIPT](#monitoring-script)
+- [README.md](#readmemd)
+- [SIGNATURE.TXT](#signaturetxt)
+- [BONUS](#bonus)
+- [SNAPSHOTS](#snapshots)
+- [USEFUL COMMANDS](#useful-commands-to-check-some-requirements)
+- [SUBMISSION](#submission)
+- [DEFENSE](#defense)
 
 
 ## BASICS:
@@ -106,14 +106,14 @@ The examples show arbitrary disk sizes. You need to determine the appropriate si
 
 
 ## SSH CONFIG:
-- Change SSH port to 4242.
+- Change SSH port to `4242`.
 - Disable SSHing in as root.
 
 
 ## FIREWALL:
 - Configure ufw firewall.
 - Launch firewall at VM launch.
-- Leave only port 4242 open in the VM.
+- Leave only port `4242` open in the VM.
 - If adding any other services (for example, as part of bonus), open only those specific ports.
 
 
@@ -164,15 +164,15 @@ You will also have to interrupt it without modifying it.
 - The very first line must be _italicized_, and read:  
   _This project has been created as part of the 42 curriculum by <login>._
 
-- A "Description" section that clearly presents the project, including its goal and a brief overview.
+- A **Description** section that clearly presents the project, including its goal and a brief overview.
 
-- An "Instructions" section containing any relevant information about compilation, installation, and/or execution.
+- An **Instructions** section containing any relevant information about compilation, installation, and/or execution.
 
-- A "Resources" section  
+- A **"Resources** section
   - listing classic references related to the topic (documentation, articles, tutorials, etc.), 
   - as well as a description of how AI was used specifying for which tasks and which parts of the project.
 
-- A "Project Description" section
+- A **Project Description** section
   - explaining your choice of operating system (Debian or Rocky),  
     including their respective advantages and disadvantages. 
   - Must describe the main design choices made during the setup:
