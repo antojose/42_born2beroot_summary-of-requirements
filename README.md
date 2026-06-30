@@ -91,162 +91,163 @@ The examples show arbitrary disk sizes. You need to determine the appropriate si
 
 
 ## PASSWORD POLICY:
-For root and non-root users:
-1) Auto-expire password every 30 days.
-Send user a warning message 7 days before their password expires.
-2) Minimum number of days between password changes: 2
-3) Choice of password:
-At least 10 characters long.
-Must contain an uppercase letter, a lowercase letter, and a number.
-Must not contain more than 3 consecutive identical characters.
-Must not include the name of the user.
-
-For non-root users only:
-The password must contain at least 7 characters that were not part of the previous password.
-
-After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account.
+- For root and non-root users:
+  - Auto-expire password every 30 days.
+  - Send user a warning message 7 days before their password expires.
+  - Minimum number of days between password changes: 2
+  - Choice of password:
+    - At least 10 characters long.
+    - Must contain an uppercase letter, a lowercase letter, and a number.
+    - Must not contain more than 3 consecutive identical characters.
+    - Must not include the name of the user.
+- For non-root users only:  
+  - The password must contain at least 7 characters that were not part of the previous password.
+- After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account.
 
 
-### SSH CONFIG:
-Change SSH port to 4242.
-Disable SSHing in as root.
+## SSH CONFIG:
+- Change SSH port to 4242.
+- Disable SSHing in as root.
 
 
-### FIREWALL:
-Configure ufw firewall.
-Launch firewall at VM launch.
-Leave only port 4242 open in the VM.
+## FIREWALL:
+- Configure ufw firewall.
+- Launch firewall at VM launch.
+- Leave only port 4242 open in the VM.
+- If adding any other services (for example, as part of bonus), open only those specific ports.
 
 
-### MONITORING SCRIPT:
-Create a bash script for monitoring, 
-called monitoring.sh, starting at startup, and 
-displaying every 10 minutes (take a look at wall).
-The banner is optional. 
-No errors should be displayed.
-  Displays the following information:
-	OS Architecture
-	OS Kernel Version
-	Number of physical processors.
-	Number of virtual processors.
-	Available RAM and Utilization Rate (percentage).
-	Available Storage and Utilization Rate (percentage).
-	CPU utilization rate (percentage).
-	Last Reboot: Date and time.
-	LVM Status (active/not).
-	No. of active connections.
-	No. of users using the server.
-	The server's IP Address and its MAC address.
-	No. of commands executed with sudo.
+## MONITORING SCRIPT:
+Create a bash script for monitoring,  
+- called `monitoring.sh`,  
+- starting at startup, and  
+- displaying every 10 minutes (take a look at wall).  
+- The banner is optional. 
+- No errors should be displayed.
+- Displays the following information:
+  - OS Architecture
+  - OS Kernel Version
+  - Number of physical processors.
+  - Number of virtual processors.
+  - Available RAM and Utilization Rate (percentage).
+  - Available Storage and Utilization Rate (percentage).
+  - CPU utilization rate (percentage).
+  - Last Reboot: Date and time.
+  - LVM Status (active/not).
+  - No. of active connections.
+  - No. of users using the server.
+  - The server's IP Address and its MAC address.
+  - No. of commands executed with sudo.
 
-	Example of how the script is expected to work:
-	Broadcast message from root@wil (tty1) (Sun Apr 25 15:45:00 2021):
-		#Architecture: Linux wil 4.19.0-16-amd64 #1 SMP Debian 4.19.181-1 (2021-03-19) x86_64 GNU/Linux
-		#Physical CPU: 1
-		#vCPU: 1
-		#Memory Usage: 74/987MB (7.50%)
-		#Disk Usage: 1009/2Gb (49%)
-		#CPU load: 6.7%
-		#Last boot: 2021-04-25 14:45
-		#LVM use: yes
-		#TCP Connections: 1 ESTABLISHED
-		#User log: 1
-		#Network: IP 10.0.2.15 (08:00:27:51:9b:a5)
-		#Sudo: 42 cmd
-
+Example of how the script is expected to work:
+```
+Broadcast message from root@wil (tty1) (Sun Apr 25 15:45:00 2021):
+	#Architecture: Linux wil 4.19.0-16-amd64 #1 SMP Debian 4.19.181-1 (2021-03-19) x86_64 GNU/Linux
+	#Physical CPU: 1
+	#vCPU: 1
+	#Memory Usage: 74/987MB (7.50%)
+	#Disk Usage: 1009/2Gb (49%)
+	#CPU load: 6.7%
+	#Last boot: 2021-04-25 14:45
+	#LVM use: yes
+	#TCP Connections: 1 ESTABLISHED
+	#User log: 1
+	#Network: IP 10.0.2.15 (08:00:27:51:9b:a5)
+	#Sudo: 42 cmd
+```
 Take a look at cron.
 
 You will also have to interrupt it without modifying it.
 
 
-### README.md:
-The very first line must be _italicized_, and read: 
-This project has been created as part of the 42 curriculum by <login>.
+## README.md:
+- The very first line must be _italicized_, and read:  
+  _This project has been created as part of the 42 curriculum by <login>._
 
-A "Description" section that clearly presents the project, including its goal and a brief overview.
+- A "Description" section that clearly presents the project, including its goal and a brief overview.
 
-An "Instructions" section containing any relevant information about compilation, installation, and/or execution.
+- An "Instructions" section containing any relevant information about compilation, installation, and/or execution.
 
-A "Resources" section listing 
-  classic references related to the topic (documentation, articles, tutorials, etc.), 
-  as well as a description of how AI was used specifying for which tasks and which parts of the project.
+- A "Resources" section  
+  - listing classic references related to the topic (documentation, articles, tutorials, etc.), 
+  - as well as a description of how AI was used specifying for which tasks and which parts of the project.
 
-A "Project Description" section
-  explaining your choice of operating system (Debian or Rocky), 
+- A "Project Description" section
+  - explaining your choice of operating system (Debian or Rocky),  
     including their respective advantages and disadvantages. 
-  Must describe the main design choices made during the setup:
-    partitioning,
-	security policies,
-	user management,
-	services installed
-  and provide a Comparison between:
-    Debian vs Rocky Linux
-    AppArmor vs SELinux
-    UFW vs firewalld
-    VirtualBox vs UTM
+  - Must describe the main design choices made during the setup:
+    - partitioning,
+	- security policies,
+	- user management,
+	- services installed
+  - and provide a Comparison between:
+    - Debian vs Rocky Linux
+    - AppArmor vs SELinux
+    - UFW vs firewalld
+    - VirtualBox vs UTM
 
 
-### SIGNATURE.TXT
-signature.txt file contains only the sha1sum of the VDI file.
-  Command: sha1sum filename.vdi
-  Example output:
-    6e657c4619944be17df3c31faa030c25e43e40a
-
-Please note that your VM's signature will be altered as soon as you start the virtual machine again.
-To allow signature verification for all your evaluations, you can either duplicate the virtual machine disk file, or use a snapshots for each evaluation.
-
-
-### BONUS:
-Bonus part will be assessed/evaluated ONLY IF 
-  the mandatory part has been FULLY completed and works without any malfunctions.
-
-Create the bonus partitions structure as detailed in the PARTITIONING section above.
-
-Set up a functional WordPress website with the following services: lighttpd, MariaDB, and PHP.
-
-Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!).
-
-Update the firewall (ufw/firewalld) rules to open necessary ports for the extra services installed as part of the BONUS requirements.
-
-
-### SNAPSHOTS:
-The use of snapshots is restricted.
-No snapshots may exist at the beginning of each evaluation.
-A snapshot dedicated to the defense will then be created and deleted at the end of the defense.
-You are encouraged to make tests with the snapshot features before submitting your project.
-
-
-### USEFUL COMMANDS TO CHECK SOME REQUIREMENTS:
-  head -n 2 /etc/os-release
-  /usr/sbin/aa-status
-  ss -tunlp
-  /usr/sbin/ufw status
-
-
-
-### SUBMISSION:
-Submit only the following files at the root of the git repo:
-  the README.md file, and 
-  the signature.txt.
-Do not add your VM to your Git repository.
-
-
-### DEFENSE:
-Understand what you use.
-
-If sha1sum of your VM's current VDI file is not the same as the one in signature.txt, you will be graded 0.
-
-You will be asked:
-  A few questions about the OS you chose:
-    For example, 
-      the differences between aptitude and apt,
-      or what SELinux or AppArmor is. 
-  How the monitoring script works.
-  To Justify the choice of the extra service you added as part of BONUS, if any.
-  To Modify your hostname.
-  To Create a new user and add to a group.
-  To Demonstrate the use of SSH by setting up a new account.
-
-
-
+## SIGNATURE.TXT
+`signature.txt` file contains only the sha1sum of the VDI file.
+- Command: `sha1sum filename.vdi`
+- Example output:
 ```
+6e657c4619944be17df3c31faa030c25e43e40a
+```
+- Please note that your VM's signature will be altered as soon as you start the virtual machine again.  
+To allow signature verification for all your evaluations,  
+you can either duplicate the virtual machine disk file,  
+or use snapshots for each evaluation.
+
+
+## BONUS:
+- **Bonus part will be assessed/evaluated ONLY IF  
+  the mandatory part has been FULLY completed and works without any malfunctions.**
+
+- Create the bonus partitions structure as detailed in the PARTITIONING section above.
+
+- Set up a functional WordPress website with the following services: lighttpd, MariaDB, and PHP.
+
+- Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!).
+
+- Update the firewall (ufw/firewalld) rules to open necessary ports for the extra services installed as part of the BONUS requirements.
+
+
+## SNAPSHOTS:
+- The use of snapshots is restricted.
+- No snapshots may exist at the beginning of each evaluation.
+- A snapshot dedicated to the defense will then be created and deleted at the end of the defense.
+- You are encouraged to make tests with the snapshot features before submitting your project.
+
+
+## USEFUL COMMANDS TO CHECK SOME REQUIREMENTS:
+  - `head -n 2 /etc/os-release`
+  - `/usr/sbin/aa-status`
+  - `ss -tunlp`
+  - `/usr/sbin/ufw status`
+
+
+
+## SUBMISSION:
+- Submit only the following files at the root of the git repo:
+  - the README.md file, and  
+  - the signature.txt.
+- Do not add your VM to your Git repository.
+
+
+## DEFENSE:
+- **Understand what you use.**
+
+- If sha1sum of your VM's current VDI file is not the same as the one in signature.txt, you will be graded 0.
+
+- You will be asked:
+  - A few questions about the OS you chose:
+    - For example, 
+      - the differences between aptitude and apt,
+      - or what SELinux or AppArmor is. 
+  - How the monitoring script works.
+  - To Justify the choice of the extra service you added as part of BONUS, if any.
+  - To Modify your hostname.
+  - To Create a new user and add to a group.
+  - To Demonstrate the use of SSH by setting up a new account.
+
