@@ -1,4 +1,4 @@
-# Summary of Requirements - Born2beRoot @42
+# SUMMARY OF REQUIREMENTS:
 
 Outline:
 - [BASICS](#basics)
@@ -39,8 +39,8 @@ Outline:
 - You will have to modify this hostname during your peer review.
 
 ## PARTITIONING:
-- Create at least 2 encrypted partitions using LVM. 
-- Below is an example of a possible partitioning:  
+- Create at least 2 encrypted partitions using LVM.
+- Below is an example of a possible partitioning:
 ```
 # lsblk
 NAME                               MAJ:MIN RM   SIZE RO TYPE   MOUNTPOINTS
@@ -49,10 +49,10 @@ sda                                  8:0    0     8G  0 disk
 ├─sda2                               8:2    0     1K  0 part   
 └─sda5                               8:5    0   7.5G  0 part   
   └─sda5_crypt                     254:0    0   7.5G  0 crypt  
-		├─wil--vg-root                 254:1    0   2.8G  0 lvm    /
-		├─wil--vg-swap_1               254:2    0   976M  0 lvm    [SWAP]
-		└─wil--vg-home                 254:3    0   3.8G  0 lvm    /home
-	sr0                                 11:0    1  1024M  0 rom    
+    ├─wil--vg-root                 254:1    0   2.8G  0 lvm    /
+    ├─wil--vg-swap_1               254:2    0   976M  0 lvm    [SWAP]
+    └─wil--vg-home                 254:3    0   3.8G  0 lvm    /home
+sr0                                 11:0    1  1024M  0 rom    
 ```
 - BONUS (matters only if everything in the mandatory part is perfect):  
 Set up the partitions correctly so that you obtain a structure similar to the one below:
@@ -64,13 +64,13 @@ sda                                  8:0    0  30.8G  0 disk
 ├─sda2                               8:2    0     1K  0 part   
 └─sda5                               8:5    0  30.3G  0 part   
   └─sda5_crypt                     254:0    0  30.3G  0 crypt  
-	├─LVMGroup-root                254:1    0    10G  0 lvm    /
-	├─LVMGroup-swap                254:2    0   2.3G  0 lvm    [SWAP]
-	├─LVMGroup-home                254:3    0     5G  0 lvm    /home
-	├─LVMGroup-var                 254:4    0     3G  0 lvm    /var
-	├─LVMGroup-srv                 254:5    0     3G  0 lvm    /srv
-	├─LVMGroup-tmp                 254:6    0     3G  0 lvm    /tmp
-	└─LVMGroup-var--log            254:7    0     4G  0 lvm    /var/log
+    ├─LVMGroup-root                254:1    0    10G  0 lvm    /
+    ├─LVMGroup-swap                254:2    0   2.3G  0 lvm    [SWAP]
+    ├─LVMGroup-home                254:3    0     5G  0 lvm    /home
+    ├─LVMGroup-var                 254:4    0     3G  0 lvm    /var
+    ├─LVMGroup-srv                 254:5    0     3G  0 lvm    /srv
+    ├─LVMGroup-tmp                 254:6    0     3G  0 lvm    /tmp
+    └─LVMGroup-var--log            254:7    0     4G  0 lvm    /var/log
 sr0                                 11:0    1  1024M  0 rom    
 ```
 The examples show arbitrary disk sizes. You need to determine the appropriate size for each partition to ensure proper operation while avoiding unnecessary disk usage.
@@ -100,7 +100,7 @@ The examples show arbitrary disk sizes. You need to determine the appropriate si
     - Must contain an uppercase letter, a lowercase letter, and a number.
     - Must not contain more than 3 consecutive identical characters.
     - Must not include the name of the user.
-- For non-root users only:  
+- For non-root users only:
   - The password must contain at least 7 characters that were not part of the previous password.
 - After setting up your configuration files, you will have to change all the passwords of the accounts present on the virtual machine, including the root account.
 
@@ -142,22 +142,22 @@ Create a bash script for monitoring,
 Example of how the script is expected to work:
 ```
 Broadcast message from root@wil (tty1) (Sun Apr 25 15:45:00 2021):
-	#Architecture: Linux wil 4.19.0-16-amd64 #1 SMP Debian 4.19.181-1 (2021-03-19) x86_64 GNU/Linux
-	#Physical CPU: 1
-	#vCPU: 1
-	#Memory Usage: 74/987MB (7.50%)
-	#Disk Usage: 1009/2Gb (49%)
-	#CPU load: 6.7%
-	#Last boot: 2021-04-25 14:45
-	#LVM use: yes
-	#TCP Connections: 1 ESTABLISHED
-	#User log: 1
-	#Network: IP 10.0.2.15 (08:00:27:51:9b:a5)
-	#Sudo: 42 cmd
+    #Architecture: Linux wil 4.19.0-16-amd64 #1 SMP Debian 4.19.181-1 (2021-03-19) x86_64 GNU/Linux
+    #Physical CPU: 1
+    #vCPU: 1
+    #Memory Usage: 74/987MB (7.50%)
+    #Disk Usage: 1009/2Gb (49%)
+    #CPU load: 6.7%
+    #Last boot: 2021-04-25 14:45
+    #LVM use: yes
+    #TCP Connections: 1 ESTABLISHED
+    #User log: 1
+    #Network: IP 10.0.2.15 (08:00:27:51:9b:a5)
+    #Sudo: 42 cmd
 ```
-Take a look at cron.
+- Take a look at `cron`.
 
-You will also have to interrupt it without modifying it.
+- You will also have to interrupt it without modifying it.
 
 
 ## README.md:
@@ -168,7 +168,7 @@ You will also have to interrupt it without modifying it.
 
 - An **Instructions** section containing any relevant information about compilation, installation, and/or execution.
 
-- A **"Resources** section
+- A **Resources** section
   - listing classic references related to the topic (documentation, articles, tutorials, etc.), 
   - as well as a description of how AI was used specifying for which tasks and which parts of the project.
 
@@ -187,7 +187,7 @@ You will also have to interrupt it without modifying it.
     - VirtualBox vs UTM
 
 
-## SIGNATURE.TXT
+## SIGNATURE.TXT:
 `signature.txt` file contains only the sha1sum of the VDI file.
 - Command: `sha1sum filename.vdi`
 - Example output:
@@ -210,7 +210,7 @@ or use snapshots for each evaluation.
 
 - Set up a service of your choice that you think is useful (NGINX / Apache2 excluded!).
 
-- Update the firewall (ufw/firewalld) rules to open necessary ports for the extra services installed as part of the BONUS requirements.
+- Update the firewall (ufw) rules to open necessary ports for the extra services installed as part of the BONUS requirements.
 
 
 ## SNAPSHOTS:
@@ -250,4 +250,3 @@ or use snapshots for each evaluation.
   - To Modify your hostname.
   - To Create a new user and add to a group.
   - To Demonstrate the use of SSH by setting up a new account.
-
