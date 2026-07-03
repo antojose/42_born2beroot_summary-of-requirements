@@ -85,7 +85,7 @@ The examples show arbitrary disk sizes. You need to determine the appropriate si
 - Max 3 attempts in the event of an incorrect password when using sudo.
 - Show custom message when an incorrect password is entered when using sudo.
 - Log (save in /var/log/sudo/ folder) the input and output of each action performed with sudo.
-- Limit paths that can be accessed with sudo:  
+- Limit paths that can be *used by* sudo:  
   `/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin`
 - Enable TTY mode.
 
